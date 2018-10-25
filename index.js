@@ -23,7 +23,10 @@ xmlhttp.onreadystatechange = function() {
       apiResponseHandler(response);
       }
 }
+function apiResponseHandler(response){
 
+imageRender(response);
+}
 function imageRender(response) {
   response.photos.photo.forEach(element => {
     let image = document.getElementById("myImg");
@@ -36,5 +39,3 @@ function imageRender(response) {
 
 xmlhttp.open('GET', url, true);
 xmlhttp.send();
-
-console.log(response);
