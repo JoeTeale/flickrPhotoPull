@@ -20,15 +20,21 @@ xmlhttp.onreadystatechange = function() {
 
     if(xmlhttp.readyState === 4 && xmlhttp.status === 200) {
       response = JSON.parse(xmlhttp.responseText);
-      console.log(response);
-      response.photos.photo.forEach(element => {
-          let image = document.getElementById("myImg");
-          let imageUrl = `http://farm${element.farm}.staticflickr.com/${element.server}/${element.id}_${element.secret}.jpg`;
-          document.write(`<img src=${imageUrl}>`);
-          console.log(image);
-      });
+      apiResponseHandler(response);
+      }
 }
+
+function imageRender(response) {
+  response.photos.photo.forEach(element => {
+    let image = document.getElementById("myImg");
+    let imageUrl = `http://farm${element.farm}.staticflickr.com/${element.server}/${element.id}_${element.secret}.jpg`;
+    document.write(`<img src=${imageUrl}>`);
+    console.log(image);
+});
+
 }
 
 xmlhttp.open('GET', url, true);
 xmlhttp.send();
+
+console.log(response);
