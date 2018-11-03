@@ -9,7 +9,7 @@ function greet(name, lastName) {
 
 console.log(greet('Joe', "Teale"));
 let apiKey='api_key=e4dd1d06d77be6c00f9ff5b3db546260';
-let tag = 'tags=Joseph Teale';
+let tag = 'tags=cats';
 let format = 'format=json&nojsoncallback=1';
 let begginingHTTP = 'https://api.flickr.com/services/rest/?'
 let url = `${begginingHTTP}method=flickr.photos.search&${apiKey}&${tag}&${format}`;
@@ -31,7 +31,12 @@ function imageRender(response) {
   response.photos.photo.forEach(element => {
     let image = document.getElementById("myImg");
     let imageUrl = `http://farm${element.farm}.staticflickr.com/${element.server}/${element.id}_${element.secret}.jpg`;
-    document.write(`<img src=${imageUrl}>`);
+    let imgStyle = document.createElement('img');
+      imgStyle.src = imageUrl; 
+      imgStyle.width=200;
+      imgStyle.height=100;
+        console.log(imgStyle);
+        document.body.appendChild(imgStyle);
     console.log(image);
 });
 
