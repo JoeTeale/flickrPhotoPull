@@ -23,13 +23,24 @@ function imageRender(response) {
     let imageUrl = `http://farm${element.farm}.staticflickr.com/${element.server}/${element.id}_${element.secret}.jpg`;
     let divTag = document.createElement('div');
     let flickrImage = document.createElement('img');
+    let divTagGrid = document.createElement('div');
+    let divImageHeader = document.createElement('div');
+    let imageTitle = document.createElement('h1');
+    let imageTitleText = document.createTextNode("Big Heading");
+      divTagGrid.className = 'Grid';
+      divTag.className = 'image';
       flickrImage.src = imageUrl; 
-        console.log(flickrImage);
-        document.body.appendChild(divTag).appendChild(flickrImage);
-    console.log(image);
+      divImageHeader.className = 'header'
+        /*console.log(flickrImage);*/
+        document.body.appendChild(divTagGrid);
+        divTagGrid.appendChild(divTag).appendChild(flickrImage);
+        divTagGrid.appendChild(divImageHeader).appendChild(imageTitle).appendChild(imageTitleText);
+   
+        /*console.log(image);*/
 });
 
 }
 
 xmlhttp.open('GET', url, true);
+
 xmlhttp.send();
